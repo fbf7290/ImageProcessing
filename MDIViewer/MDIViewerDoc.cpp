@@ -13,6 +13,8 @@
 
 #include <propkey.h>
 
+#include "CMyImage\LoadImageFileDialog.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -22,6 +24,7 @@
 IMPLEMENT_DYNCREATE(CMDIViewerDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CMDIViewerDoc, CDocument)
+	ON_COMMAND(ID_Menu_View, &CMDIViewerDoc::OnMenuView)
 END_MESSAGE_MAP()
 
 
@@ -135,3 +138,14 @@ void CMDIViewerDoc::Dump(CDumpContext& dc) const
 
 
 // CMDIViewerDoc 명령
+
+
+void CMDIViewerDoc::OnMenuView()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	m_image = LoadImageFromDialog();
+	if (!m_image.IsEmpty())
+	{
+		UpdateAllViews(NULL);
+	}
+}
