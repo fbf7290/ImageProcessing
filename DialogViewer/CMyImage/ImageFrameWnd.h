@@ -1,17 +1,26 @@
 #pragma once
 
+#include "ImageView.h"
 
-// ImageFrameWnd 프레임입니다.
+// CImageFrameWnd frame
 
-class ImageFrameWnd : public CFrameWnd
+class CImageFrameWnd : public CFrameWnd
 {
-	DECLARE_DYNCREATE(ImageFrameWnd)
-protected:
-	ImageFrameWnd();           // 동적 만들기에 사용되는 protected 생성자입니다.
-	virtual ~ImageFrameWnd();
+public:
+	CImageFrameWnd();
+	CImageFrameWnd(const CByteImage &image, const char *name = NULL);
+	virtual ~CImageFrameWnd();
+	CImageView& GetImageView() { return m_view; };
 
 protected:
 	DECLARE_MESSAGE_MAP()
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	virtual void PostNcDestroy();
+
+	CImageView	m_view;
+public:
+//	afx_msg void OnClose();
+//	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 };
 
 

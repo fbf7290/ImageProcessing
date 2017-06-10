@@ -18,6 +18,6 @@ protected:
 	std::vector <CImageFrameWnd* > m_vpImageWnd;
 };
 
-extern void ShowImage(const CByteImage& input, const char *name = NULL);
-extern void CloseImage(const char* name);
-extern void CloseAllImages();
+void ShowImage(const CByteImage& input, const char *name = NULL);
+void CloseImage(const char* name);
+void CloseAllImages();
